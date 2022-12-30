@@ -1,16 +1,23 @@
 import { Button, Checkbox, Form, Input } from "antd";
-import * as React from "react";
+import React, { useCallback, useState } from "react";
 
-interface ILoginProps {}
+interface ILoginFormProps {}
 
-const Login: React.FunctionComponent<ILoginProps> = (props) => {
+const LoginForm: React.FunctionComponent<ILoginFormProps> = (props) => {
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+
   const onFinish = (values: any) => {
     console.log("Success:", values);
+    //Success: {password: 'sdf', remember: true, email: 'asdf'}
   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
+
+  const validateEmail = useCallback(() => {}, []);
+
   return (
     <>
       <Form
@@ -23,11 +30,11 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
+          label="Email"
+          name="email"
+          rules={[{ validator: validateEmail }]}
         >
-          <Input />
+          <Input value={email} />
         </Form.Item>
 
         <Form.Item
@@ -35,7 +42,7 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
         >
-          <Input.Password />
+          <Input.Password value={password} />
         </Form.Item>
 
         <Form.Item
@@ -47,7 +54,7 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" disabled>
             Submit
           </Button>
         </Form.Item>
@@ -56,4 +63,4 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
   );
 };
 
-export default Login;
+export default LoginForm;
