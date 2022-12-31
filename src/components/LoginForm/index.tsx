@@ -1,26 +1,30 @@
-import { Button, Checkbox, Form, Input } from "antd";
-import React, { useCallback, useState } from "react";
+import { Button, Form, Input } from "antd";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import useAuth from "../../hooks/useAuth";
 import useInput from "../../hooks/useInput";
 
-interface ILoginFormProps { }
+interface ILoginFormProps {
+  setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined
+}
 
-const LoginForm: React.FunctionComponent<ILoginFormProps> = (props) => {
+const LoginForm: React.FunctionComponent<ILoginFormProps> = ({ setLoginToken }) => {
+  const navigate = useNavigate();
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
-  const { data, isLoading, isError, refetch } = useAuth(email, password);
+  const { data, refetch } = useAuth(email, password);
 
-  console.log(data)
   const onFinish = () => {
-    console.log("Success:", email, password);
     refetch();
-    //Success: {password: 'sdf', remember: true, email: 'asdf'}
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-
-  };
+  useEffect(() => {
+    if (!data) return;
+    const { token } = data;
+    setLoginToken && setLoginToken(token);
+    navigate("/")
+  }, [data])
 
   return (
     <>
@@ -30,7 +34,6 @@ const LoginForm: React.FunctionComponent<ILoginFormProps> = (props) => {
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
         <Form.Item
