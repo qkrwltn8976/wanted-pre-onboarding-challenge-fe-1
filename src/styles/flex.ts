@@ -6,8 +6,8 @@ export const flexCenter = css`
   justify-content: center;
 `;
 
-export const flexColumn = css`
+export const flexHorizontal = css`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: baseline;
+  justify-content: space-evenly;
 `;
