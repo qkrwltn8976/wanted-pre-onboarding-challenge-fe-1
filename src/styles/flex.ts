@@ -5,3 +5,9 @@ export const flexCenter = css`
   align-items: center;
   justify-content: center;
 `;
+
+export const flexColumn = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
