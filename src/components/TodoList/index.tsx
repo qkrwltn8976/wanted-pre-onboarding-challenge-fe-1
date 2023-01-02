@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { List } from "antd";
+import { Button, List } from "antd";
 import * as React from "react";
 import { Todo } from "../../types/todos";
 
@@ -19,7 +19,7 @@ const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
         itemLayout="horizontal"
         dataSource={todos}
         renderItem={(item) => (
-          <List.Item>
+          <List.Item actions={[<Button>수정</Button>, <Button>삭제</Button>]}>
             <List.Item.Meta title={item.title} description={item.content} />
           </List.Item>
         )}
