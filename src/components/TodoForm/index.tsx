@@ -41,6 +41,7 @@ const TodoForm: React.FunctionComponent<ITodoFormProps> = ({
       onFinish={onFinish}
       autoComplete="off"
       form={form}
+      disabled
     >
       <Form.Item label="Title" name="title">
         <Input value={title} onChange={onChangeTitle} />

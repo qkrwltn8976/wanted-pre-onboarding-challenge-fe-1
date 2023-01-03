@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
-import { Button, List, Modal } from "antd";
+import { Button, List } from "antd";
 import React, { useState } from "react";
-import { useDeleteTodo, useGetTodo } from "../../hooks/useTodos";
+import { useDeleteTodo } from "../../hooks/useTodos";
 import { Todo } from "../../types/todos";
-import TodoForm from "../TodoForm";
 import TodoModal from "../TodoModal";
 
 interface ITodoListProps {

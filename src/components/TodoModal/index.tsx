@@ -27,7 +27,7 @@ const TodoModal: React.FunctionComponent<ITodoModalProps> = ({
       footer={null}
     >
       <TodoForm
-        submitBtnTxt={"수정"}
+        submitBtnTxt={"제출"}
         todo={data}
         onSubmit={(todoInput: TodoInput) => {
           mutate(todoInput);

@@ -1,10 +1,21 @@
-import { useQuery } from "react-query";
-import { loginApi } from "../apis/auth";
+import { useMutation, useQuery } from "react-query";
+import { login, signUp } from "../apis/auth";
 import { AuthResponse } from "../types/auth";
+import { UserInput } from "../types/users";
 
-const useAuth = (email: string, password: string) =>
-  useQuery<AuthResponse>(["login"], () => loginApi(email, password), {
+const useLogin = (email: string, password: string) =>
+  useQuery<AuthResponse>(["login"], () => login(email, password), {
     enabled: false,
   });
 
-export default useAuth;
+const useRegister = () => {
+  return useMutation(
+    ["register"],
+    (userInput: UserInput) => signUp(userInput),
+    {
+      onSuccess: () => {},
+    }
+  );
+};
+
+export { useLogin, useRegister };
