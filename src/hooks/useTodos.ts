@@ -14,30 +14,41 @@ const useGetTodo = (id: string) =>
 
 const useGetTodos = () => useQuery<Todo[]>(["todos"], () => getTodos());
 
-const useAddTodo = (todoInput: TodoInput) => {
+const useAddTodo = () => {
   const queryClient = useQueryClient();
-  return useMutation<Todo>(["addTodo"], () => createTodo(todoInput), {
-    onSuccess: (newTodo: Todo) => {
-      queryClient.setQueryData(["todos"], (todos: Todo[] | undefined) => {
-        const prevTodos = todos ?? [];
-        return [...prevTodos, newTodo];
-      });
-    },
-  });
+  return useMutation(
+    ["addTodo"],
+    (todoInput: TodoInput) => createTodo(todoInput),
+    {
+      onSuccess: (newTodo: Todo) => {
+        queryClient.setQueryData(["todos"], (todos: Todo[] | undefined) => {
+          const prevTodos = todos ?? [];
+          return [...prevTodos, newTodo];
+        });
+      },
+    }
+  );
 };
 
-const useUpdateTodo = (id: string, todoInput: TodoInput) => {
+const useUpdateTodo = (id: string) => {
   const queryClient = useQueryClient();
-  return useMutation<Todo>(["updateTodo"], () => updateTodo(id, todoInput), {
-    onSuccess: (newTodo: Todo) => {
-      console.log("success", newTodo);
-    },
-  });
+  return useMutation(
+    ["updateTodo", id],
+    (todoInput: TodoInput) => updateTodo(id, todoInput),
+    {
+      onSuccess: (updatedTodo: Todo) => {
+        queryClient.setQueryData(["todos"], (todos: Todo[] | undefined) => {
+          const prevTodos = todos ?? [];
+          return prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo));
+        });
+      },
+    }
+  );
 };
 
 const useDeleteTodo = () => {
   const queryClient = useQueryClient();
-  return useMutation(["updateTodo"], (id: string) => deleteTodo(id), {
+  return useMutation(["deleteTodo"], (id: string) => deleteTodo(id), {
     onSuccess: (id: string) => {
       queryClient.setQueryData(["todos"], (todos: Todo[] | undefined) => {
         const prevTodos = todos ?? [];

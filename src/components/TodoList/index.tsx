@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 import { Button, List, Modal } from "antd";
 import React, { useState } from "react";
-import { useDeleteTodo } from "../../hooks/useTodos";
+import { useDeleteTodo, useGetTodo } from "../../hooks/useTodos";
 import { Todo } from "../../types/todos";
+import TodoForm from "../TodoForm";
+import TodoModal from "../TodoModal";
 
 interface ITodoListProps {
   todos: Todo[] | undefined;
@@ -14,7 +16,7 @@ const Base = styled.div`
 
 const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
   const { mutate } = useDeleteTodo();
-  const [open, setOpen] = useState<boolean>(false);
+  const [selectedId, setSelectedId] = useState<string | null>();
 
   return (
     <Base>
@@ -24,7 +26,7 @@ const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
         renderItem={(item) => (
           <List.Item
             actions={[
-              <Button onClick={() => setOpen(true)}>보기</Button>,
+              <Button onClick={() => setSelectedId(item.id)}>보기</Button>,
               <Button onClick={() => mutate(item.id)}>삭제</Button>,
             ]}
           >
@@ -32,18 +34,13 @@ const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
           </List.Item>
         )}
       />
-      <Modal
-        title="Modal width"
-        centered
-        open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
-        width={500}
-      >
-        <p>some contents...</p>
-        <p>some contents...</p>
-        <p>some contents...</p>
-      </Modal>
+      {selectedId && (
+        <TodoModal
+          open={!!selectedId}
+          onCancel={() => setSelectedId(null)}
+          todoId={selectedId}
+        />
+      )}
     </Base>
   );
 };
