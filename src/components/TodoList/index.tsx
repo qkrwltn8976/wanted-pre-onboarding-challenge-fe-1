@@ -31,7 +31,7 @@ const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
         )}
       />
       <Modal
-        title="Modal 1000px width"
+        title="Modal width"
         centered
         open={open}
         onOk={() => setOpen(false)}

@@ -1,19 +1,24 @@
 import { Button, Card, Form, Input } from "antd";
 import * as React from "react";
 import useInput from "../../hooks/useInput";
+import { useAddTodo } from "../../hooks/useTodos";
 
 interface ITodoFormProps {}
 
 const TodoForm: React.FunctionComponent<ITodoFormProps> = (props) => {
   const [title, onChangeTitle] = useInput("");
   const [content, onChangeContent] = useInput("");
+  const { mutate } = useAddTodo({ title, content });
+
   const onFinish = () => {
-    // refetch();
+    console.log(title, content);
+    mutate();
   };
+
   return (
     <Card
       title="Default size card"
-      extra={<a href="#">More</a>}
+      // extra={<a href="#">More</a>}
       style={{ width: 500 }}
     >
       <Form
@@ -29,7 +34,7 @@ const TodoForm: React.FunctionComponent<ITodoFormProps> = (props) => {
         </Form.Item>
 
         <Form.Item label="Content" name="content">
-          <Input.Password value={content} onChange={onChangeContent} />
+          <Input value={content} onChange={onChangeContent} />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
