@@ -1,5 +1,11 @@
 import { TodoInput } from "./../types/todos";
-import { createTodo, getTodoById, getTodos } from "./../apis/todo";
+import {
+  createTodo,
+  deleteTodo,
+  getTodoById,
+  getTodos,
+  updateTodo,
+} from "./../apis/todo";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { Todo } from "../types/todos";
 
@@ -12,7 +18,6 @@ const useAddTodo = (todoInput: TodoInput) => {
   const queryClient = useQueryClient();
   return useMutation<Todo>(["addTodo"], () => createTodo(todoInput), {
     onSuccess: (newTodo: Todo) => {
-      console.log("success", newTodo);
       queryClient.setQueryData(["todos"], (todos: Todo[] | undefined) => {
         const prevTodos = todos ?? [];
         return [...prevTodos, newTodo];
@@ -21,4 +26,25 @@ const useAddTodo = (todoInput: TodoInput) => {
   });
 };
 
-export { useGetTodo, useGetTodos, useAddTodo };
+const useUpdateTodo = (id: string, todoInput: TodoInput) => {
+  const queryClient = useQueryClient();
+  return useMutation<Todo>(["updateTodo"], () => updateTodo(id, todoInput), {
+    onSuccess: (newTodo: Todo) => {
+      console.log("success", newTodo);
+    },
+  });
+};
+
+const useDeleteTodo = () => {
+  const queryClient = useQueryClient();
+  return useMutation(["updateTodo"], (id: string) => deleteTodo(id), {
+    onSuccess: (id: string) => {
+      queryClient.setQueryData(["todos"], (todos: Todo[] | undefined) => {
+        const prevTodos = todos ?? [];
+        return prevTodos.filter((todo) => todo.id !== id);
+      });
+    },
+  });
+};
+
+export { useGetTodo, useGetTodos, useAddTodo, useUpdateTodo, useDeleteTodo };

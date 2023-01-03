@@ -13,4 +13,4 @@ export const updateTodo = (id: string, todoInput: TodoInput) =>
   axios.put(`/todos/${id}`, todoInput).then((res) => res.data);
 
 export const deleteTodo = (id: string) =>
-  axios.delete(`/todos/${id}`).then((res) => res.data);
+  axios.delete(`/todos/${id}`).then(() => id);

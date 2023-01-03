@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Button, List, Modal } from "antd";
 import React, { useState } from "react";
+import { useDeleteTodo } from "../../hooks/useTodos";
 import { Todo } from "../../types/todos";
 
 interface ITodoListProps {
@@ -12,6 +13,7 @@ const Base = styled.div`
 `;
 
 const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
+  const { mutate } = useDeleteTodo();
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -23,7 +25,7 @@ const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
           <List.Item
             actions={[
               <Button onClick={() => setOpen(true)}>보기</Button>,
-              <Button>삭제</Button>,
+              <Button onClick={() => mutate(item.id)}>삭제</Button>,
             ]}
           >
             <List.Item.Meta title={item.title} description={item.content} />
