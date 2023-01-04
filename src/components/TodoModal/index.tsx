@@ -1,5 +1,5 @@
-import { Modal } from "antd";
-import * as React from "react";
+import { Button, Modal } from "antd";
+import React, { useState } from "react";
 import { useGetTodo, useUpdateTodo } from "../../hooks/useTodos";
 import { TodoInput } from "../../types/todos";
 import TodoForm from "../TodoForm";
@@ -17,6 +17,8 @@ const TodoModal: React.FunctionComponent<ITodoModalProps> = ({
 }) => {
   const { data } = useGetTodo(todoId);
   const { mutate } = useUpdateTodo(todoId);
+  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+
   return (
     <Modal
       centered
@@ -33,6 +35,14 @@ const TodoModal: React.FunctionComponent<ITodoModalProps> = ({
           mutate(todoInput);
           onCancel();
         }}
+        isDisabled={isDisabled}
+        extraButton={
+          <>
+            <Button disabled={false} onClick={() => setIsDisabled(false)}>
+              수정
+            </Button>
+          </>
+        }
       />
     </Modal>
   );
