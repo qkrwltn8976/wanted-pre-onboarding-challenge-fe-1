@@ -52,7 +52,7 @@ const LoginForm: React.FunctionComponent<ILoginFormProps> = ({
             htmlType="submit"
             disabled={email.length > 0 && password.length > 0 ? false : true}
           >
-            Submit
+            로그인
           </Button>
         </Form.Item>
       </Form>

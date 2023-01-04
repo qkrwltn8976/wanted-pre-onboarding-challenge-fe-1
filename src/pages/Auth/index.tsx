@@ -1,23 +1,28 @@
 import styled from "@emotion/styled";
-import * as React from "react";
+import React, { useState } from "react";
 import WithAuth from "../../components/commons/hocs/withAuth";
 import LoginForm from "../../components/LoginForm";
 import RegisterForm from "../../components/RegisterForm";
 import { flexCenter } from "../../styles/flex";
 
 interface IAuthProps {
-  setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined
+  setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined;
 }
 
 const Base = styled.div`
- height:100vh;
- ${flexCenter}
-`
+  height: 100vh;
+  ${flexCenter}
+`;
 const Auth: React.FunctionComponent<IAuthProps> = (props) => {
+  const [showLogin, setShowLogin] = useState<boolean>(true);
   return (
     <Base>
-      <LoginForm {...props} />
-      {/* <RegisterForm /> */}
+      {showLogin ? <LoginForm {...props} /> : <RegisterForm {...props} />}
+      {showLogin && (
+        <a href="#" onClick={() => setShowLogin(false)}>
+          회원가입
+        </a>
+      )}
     </Base>
   );
 };

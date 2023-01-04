@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { login, signUp } from "../apis/auth";
 import { AuthResponse } from "../types/auth";
 import { UserInput } from "../types/users";
@@ -9,6 +9,7 @@ const useLogin = (email: string, password: string) =>
   });
 
 const useRegister = () => {
+  const queryClient = useQueryClient();
   return useMutation(
     ["register"],
     (userInput: UserInput) => signUp(userInput),
