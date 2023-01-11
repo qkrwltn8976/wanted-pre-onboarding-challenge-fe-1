@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Button, List } from "antd";
 import React, { useState } from "react";
-import { useDeleteTodo } from "../../hooks/useTodos";
+import { useDeleteTodo } from "../../hooks/queries/useTodos";
 import { Todo } from "../../types/todos";
 import TodoModal from "../TodoModal";
 

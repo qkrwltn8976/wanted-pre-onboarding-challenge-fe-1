@@ -1,7 +1,7 @@
 import { Button, Form, Input } from "antd";
 import React, { useCallback, useEffect } from "react";
-import { useRegister } from "../../hooks/useAuth";
-import useInput from "../../hooks/useInput";
+import { useRegister } from "../../hooks/queries/useAuth";
+import useInput from "../../hooks/commons/useInput";
 
 interface IRegisterFormProps {
   setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined;
