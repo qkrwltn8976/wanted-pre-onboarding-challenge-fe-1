@@ -11,6 +11,7 @@ interface IAuthProps {
 
 const Base = styled.div`
   height: 100vh;
+  flex-direction: column;
   ${flexCenter}
 `;
 const Auth: React.FunctionComponent<IAuthProps> = (props) => {
