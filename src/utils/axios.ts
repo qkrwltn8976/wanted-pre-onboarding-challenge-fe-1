@@ -1,4 +1,5 @@
 import Axios, { AxiosRequestConfig } from "axios";
+import { ACCESS_TOKEN_KEY } from "../constants/token.constant";
 
 const axios = Axios.create({
   baseURL: "http://localhost:8081",
@@ -6,7 +7,7 @@ const axios = Axios.create({
 
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const token = localStorage.getItem("my-app_loginToken");
+    const token = localStorage.getItem(ACCESS_TOKEN_KEY);
 
     if (!token) return config;
 
