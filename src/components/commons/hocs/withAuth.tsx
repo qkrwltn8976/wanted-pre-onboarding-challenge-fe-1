@@ -3,7 +3,7 @@ import React, { ComponentType, useEffect } from "react";
 import { useLocalStorage } from "../../../utils/storage";
 
 function WithAuth<P extends object>(Component: ComponentType<P>): React.FC<P> {
-  return function WihAuthComponent({ dataObj, ...props }: any) {
+  return function WihAuthComponent({ ...props }) {
     const navigate = useNavigate();
     const [loginToken, setLoginToken] = useLocalStorage("loginToken", "");
 

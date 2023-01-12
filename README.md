@@ -8,7 +8,7 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
 
-# 1-2) 클라이언트 구현 과제 안내
+# 클라이언트 구현 과제 안내
 
 ## Assignment 1 - Login / SignUp
 
