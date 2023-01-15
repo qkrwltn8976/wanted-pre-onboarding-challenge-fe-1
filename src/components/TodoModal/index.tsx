@@ -17,7 +17,7 @@ const TodoModal: React.FunctionComponent<ITodoModalProps> = ({
 }) => {
   const { data } = useGetTodo(todoId);
   const { mutate } = useUpdateTodo(todoId);
-  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   return (
     <Modal

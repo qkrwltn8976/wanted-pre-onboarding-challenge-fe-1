@@ -14,7 +14,7 @@ const Base = styled.div`
   ${flexCenter}
 `;
 const Auth: React.FunctionComponent<IAuthProps> = (props) => {
-  const [showLogin, setShowLogin] = useState<boolean>(true);
+  const [showLogin, setShowLogin] = useState(true);
   return (
     <Base>
       {showLogin ? <LoginForm {...props} /> : <RegisterForm {...props} />}

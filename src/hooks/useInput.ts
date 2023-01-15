@@ -1,19 +1,19 @@
 import { useCallback, useState } from "react";
 
-const useInput = (
-  initialValue: string
+const useInput = <T = any>(
+  initialValue: T
 ): [
-  string,
+  T,
   (e: React.ChangeEvent<HTMLInputElement>) => void,
-  React.Dispatch<React.SetStateAction<string>>
+  React.Dispatch<React.SetStateAction<T>>
 ] => {
-  const [value, setValue] = useState<string>(initialValue);
+  const [value, setValue] = useState(initialValue);
 
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = e;
-    setValue(value);
+    setValue(value as unknown as T);
   }, []);
 
   return [value, onChange, setValue];
