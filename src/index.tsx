@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { QueryCache, QueryClient, QueryClientProvider } from "react-query";
+import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from "react-query";
 import GlobalStyle from "./styles/GlobalStyle";
 import toast, { Toaster } from 'react-hot-toast';
 import { AxiosError } from "axios";
@@ -10,6 +10,7 @@ import { AxiosError } from "axios";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,6 +20,13 @@ const queryClient = new QueryClient({
     },
   },
   queryCache: new QueryCache({
+    onError: (error) => {
+      if (error instanceof AxiosError) {
+        toast.error(`${error.response?.data.details}`)
+      }
+    }
+  }),
+  mutationCache: new MutationCache({
     onError: (error) => {
       if (error instanceof AxiosError) {
         toast.error(`${error.response?.data.details}`)

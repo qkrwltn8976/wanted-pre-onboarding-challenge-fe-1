@@ -1,20 +1,24 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { login, signUp } from "../../apis/auth";
-import { AuthResponse } from "../../types/auth";
 import { UserInput } from "../../types/users";
+import toast from "react-hot-toast";
 
 const useLogin = (email: string, password: string) =>
-  useQuery<AuthResponse>(["login"], () => login(email, password), {
+  useQuery(["login"], () => login(email, password), {
     enabled: false,
+    onSuccess: ({ message }) => {
+      toast.success(message);
+    },
   });
 
 const useRegister = () => {
-  const queryClient = useQueryClient();
   return useMutation(
     ["register"],
     (userInput: UserInput) => signUp(userInput),
     {
-      onSuccess: () => {},
+      onSuccess: ({ message }) => {
+        toast.success(message);
+      },
     }
   );
 };
