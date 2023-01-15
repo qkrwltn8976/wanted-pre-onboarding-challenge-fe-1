@@ -45,3 +45,6 @@
 - [x] tsconfig에 strict 옵션 적용
 - [x] 타입 가드 및 타입 추론을 사용해 any, 타입 단언을 모두 없애기
 - [ ] 보다 좁은 타입으로 정의 (ex. string → as const or union)
+- [x] react query QueryClient 설정 추가 global error 토스트 메시지 처리
+
+
