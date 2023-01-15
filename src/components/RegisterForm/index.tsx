@@ -3,6 +3,7 @@ import React, { useCallback, useEffect } from "react";
 import { useRegister } from "../../hooks/queries/useAuth";
 import useInput from "../../hooks/commons/useInput";
 import { RuleObject } from "antd/es/form";
+import { emailValidator, passwordValidator } from "../../utils/validator";
 
 interface IRegisterFormProps {
   setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined;
@@ -23,8 +24,7 @@ const RegisterForm: React.FunctionComponent<IRegisterFormProps> = ({
   };
 
   const validateEmail = useCallback((_: RuleObject, value: string) => {
-    const regExp = /(?=.*@)(?=.*\.).*/;
-    if (!regExp.test(value)) {
+    if (!emailValidator(value)) {
       return Promise.reject(
         new Error("이메일은 최소 `@`, `.` 포함해야 합니다")
       );
@@ -33,7 +33,7 @@ const RegisterForm: React.FunctionComponent<IRegisterFormProps> = ({
   }, []);
 
   const validatePassword = useCallback((_: RuleObject, value: string) => {
-    if (value.length < 8) {
+    if (!passwordValidator(value)) {
       return Promise.reject(new Error("비밀번호는 8자 이상 입력해야 합니다"));
     }
     return Promise.resolve();
