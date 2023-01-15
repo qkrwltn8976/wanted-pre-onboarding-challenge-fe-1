@@ -1,6 +1,14 @@
 # :: 원티드 프리온보딩 챌린지 프론트엔드 코스 사전과제
 
-# 1-2) 클라이언트 구현 과제 안내
+## 📚 기술스택
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
+
+# 클라이언트 구현 과제 안내
 
 ## Assignment 1 - Login / SignUp
 
@@ -30,3 +38,10 @@
 - 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현해주세요
 
   - [x] 수정되는 Todo의 내용이 목록에서도 실시간으로 반영되어야 합니다
+
+## 개선사항
+
+- [ ] 삭제, 업데이트 등 파괴적 동작을 할 때 유지의 확인 필요
+- [x] tsconfig에 strict 옵션 적용
+- [x] 타입 가드 및 타입 추론을 사용해 any, 타입 단언을 모두 없애기
+- [ ] 보다 좁은 타입으로 정의 (ex. string → as const or union)

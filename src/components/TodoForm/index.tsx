@@ -1,6 +1,6 @@
 import { Button, Form, Input } from "antd";
 import React, { useCallback, useEffect } from "react";
-import useInput from "../../hooks/useInput";
+import useInput from "../../hooks/commons/useInput";
 import { Todo, TodoInput } from "../../types/todos";
 import { ButtonsWrapper } from "./style";
 

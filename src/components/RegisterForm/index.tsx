@@ -1,7 +1,8 @@
 import { Button, Form, Input } from "antd";
 import React, { useCallback, useEffect } from "react";
-import { useRegister } from "../../hooks/useAuth";
-import useInput from "../../hooks/useInput";
+import { useRegister } from "../../hooks/queries/useAuth";
+import useInput from "../../hooks/commons/useInput";
+import { RuleObject } from "antd/es/form";
 
 interface IRegisterFormProps {
   setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined;
@@ -16,12 +17,12 @@ const RegisterForm: React.FunctionComponent<IRegisterFormProps> = ({
 
   const { mutate, data } = useRegister();
 
-  const onFinish = (values: any) => {
+  const onFinish = () => {
     if (!email || !password) return;
     mutate({ email, password });
   };
 
-  const validateEmail = useCallback((_: any, value: any) => {
+  const validateEmail = useCallback((_: RuleObject, value: string) => {
     const regExp = /(?=.*@)(?=.*\.).*/;
     if (!regExp.test(value)) {
       return Promise.reject(
@@ -31,7 +32,7 @@ const RegisterForm: React.FunctionComponent<IRegisterFormProps> = ({
     return Promise.resolve();
   }, []);
 
-  const validatePassword = useCallback((_: any, value: any) => {
+  const validatePassword = useCallback((_: RuleObject, value: string) => {
     if (value.length < 8) {
       return Promise.reject(new Error("비밀번호는 8자 이상 입력해야 합니다"));
     }
@@ -39,8 +40,7 @@ const RegisterForm: React.FunctionComponent<IRegisterFormProps> = ({
   }, []);
 
   const validatePasswordCheck = useCallback(
-    (_: any, value: any) => {
-      console.log(value, password);
+    (_: RuleObject, value: string) => {
       if (value !== password) {
         return Promise.reject(new Error("비밀번호가 일치하지 않습니다"));
       }

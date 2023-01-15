@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
  * A prefix to identify session and local storage keys saved using
  * the storage hooks in this application.
  */
-const STORAGE_KEYS_PREFIX = "my-app_";
+const STORAGE_KEYS_PREFIX = "";
 
 const useStorage =
   (storage: Storage, keyPrefix: string) =>

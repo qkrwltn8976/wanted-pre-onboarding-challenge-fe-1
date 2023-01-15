@@ -1,13 +1,13 @@
-import { TodoInput } from "./../types/todos";
+import { TodoInput } from "./../../types/todos";
 import {
   createTodo,
   deleteTodo,
   getTodoById,
   getTodos,
   updateTodo,
-} from "./../apis/todo";
+} from "./../../apis/todo";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { Todo } from "../types/todos";
+import { Todo } from "../../types/todos";
 
 const useGetTodo = (id: string) =>
   useQuery<Todo>(["todo"], () => getTodoById(id));
