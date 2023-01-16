@@ -9,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { AxiosError } from "axios";
 import Router from "./router/router";
 import { BrowserRouter } from "react-router-dom";
+import Layout from "./components/commons/Layout/Layout";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,7 +40,9 @@ function App() {
       <GlobalStyle />
       <Toaster />
       <BrowserRouter>
-        <Router />
+        <Layout>
+          <Router />
+        </Layout>
       </BrowserRouter>
     </QueryClientProvider>
   );
