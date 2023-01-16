@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { Button, List } from "antd";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDeleteTodo } from "../../hooks/queries/useTodos";
-import { Todo } from "../../types/todos";
+import { useDeleteTodo } from "../../../hooks/queries/useTodos";
+import { Todo } from "../../../types/todos";
 import TodoModal from "../TodoModal";
 
 interface ITodoListProps {

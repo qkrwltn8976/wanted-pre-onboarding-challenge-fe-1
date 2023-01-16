@@ -1,9 +1,9 @@
 import { Button, Form, Input } from "antd";
 import React, { useCallback, useEffect } from "react";
-import { useRegister } from "../../hooks/queries/useAuth";
-import useInput from "../../hooks/commons/useInput";
+import { useRegister } from "../../../hooks/queries/useAuth";
+import useInput from "../../../hooks/commons/useInput";
 import { RuleObject } from "antd/es/form";
-import { emailValidator, passwordValidator } from "../../utils/validator";
+import { emailValidator, passwordValidator } from "../../../utils/validator";
 
 interface IRegisterFormProps {
   setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined;

@@ -1,9 +1,9 @@
 import { Button, Form, Input } from "antd";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLogin } from "../../hooks/queries/useAuth";
+import { useLogin } from "../../../hooks/queries/useAuth";
 
-import useInput from "../../hooks/commons/useInput";
+import useInput from "../../../hooks/commons/useInput";
 
 interface ILoginFormProps {
   setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined;

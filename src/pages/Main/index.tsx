@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "@emotion/styled";
-import WithAuth from "../../components/commons/hocs/withAuth";
-import TodoList from "../../components/TodoList";
+import WithAuth from "../../components/Common/hocs/withAuth";
+import TodoList from "../../components/Todo/TodoList";
 import { flexHorizontal } from "../../styles/flex";
 import { useAddTodo, useGetTodos } from "../../hooks/queries/useTodos";
-import TodoForm from "../../components/TodoForm";
+import TodoForm from "../../components/Todo/TodoForm";
 import { Card } from "antd";
 
 interface IMainProps {}

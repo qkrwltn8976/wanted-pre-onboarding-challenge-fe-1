@@ -9,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { AxiosError } from "axios";
 import Router from "./router/router";
 import { BrowserRouter } from "react-router-dom";
-import Layout from "./components/commons/Layout/Layout";
+import Layout from "./components/Common/Layout/Layout";
 
 const queryClient = new QueryClient({
   defaultOptions: {

@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import React, { useState } from "react";
-import WithAuth from "../../components/commons/hocs/withAuth";
-import LoginForm from "../../components/LoginForm";
-import RegisterForm from "../../components/RegisterForm";
+import WithAuth from "../../components/Common/hocs/withAuth";
+import LoginForm from "../../components/Auth/LoginForm";
+import RegisterForm from "../../components/Auth/RegisterForm";
 import { flexCenter } from "../../styles/flex";
 
 interface IAuthProps {

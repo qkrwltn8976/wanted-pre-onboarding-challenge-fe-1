@@ -1,7 +1,7 @@
 import { Button, Modal } from "antd";
 import React, { useState } from "react";
-import { useGetTodo, useUpdateTodo } from "../../hooks/queries/useTodos";
-import { TodoInput } from "../../types/todos";
+import { useGetTodo, useUpdateTodo } from "../../../hooks/queries/useTodos";
+import { TodoInput } from "../../../types/todos";
 import TodoForm from "../TodoForm";
 
 interface ITodoModalProps {
