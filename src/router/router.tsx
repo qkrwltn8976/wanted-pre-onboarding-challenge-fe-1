@@ -8,8 +8,10 @@ const Router = () => {
       <Route path="/todos" element={<Main />}>
         <Route path=":id" element={<Main />} />
       </Route>
-      <Route path="/auth" element={<Auth />} />
-
+      <Route path="/auth" element={<Auth />}>
+        <Route path="login" element={<Auth />} />
+        <Route path="register" element={<Auth />} />
+      </Route>
       <Route path="*" element={<Navigate to="todos" replace />} />
     </Routes>
   );

@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React from "react";
 import WithAuth from "../../components/Common/hocs/withAuth";
-import LoginForm from "../../components/Auth/LoginForm";
-import RegisterForm from "../../components/Auth/RegisterForm";
 import { flexCenter } from "../../styles/flex";
+import Login from "../../components/Auth/Login";
+import { IAuthProps } from "../../types/authProps";
 
-interface IAuthProps {
-  setLoginToken?: React.Dispatch<React.SetStateAction<string>> | undefined;
-}
+import { useLocation } from "react-router-dom";
+import Register from "../../components/Auth/Register";
 
 const Base = styled.div`
   height: 100vh;
@@ -15,16 +14,10 @@ const Base = styled.div`
   ${flexCenter}
 `;
 const Auth: React.FunctionComponent<IAuthProps> = (props) => {
-  const [showLogin, setShowLogin] = useState(true);
+  const { pathname } = useLocation();
+  const isLoginPage = pathname.includes("/login");
   return (
-    <Base>
-      {showLogin ? <LoginForm {...props} /> : <RegisterForm {...props} />}
-      {showLogin && (
-        <a href="#" onClick={() => setShowLogin(false)}>
-          회원가입
-        </a>
-      )}
-    </Base>
+    <Base>{isLoginPage ? <Login {...props} /> : <Register {...props} />}</Base>
   );
 };
 
