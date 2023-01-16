@@ -10,7 +10,7 @@ function WithAuth<P extends object>(Component: ComponentType<P>): React.FC<P> {
 
     useEffect(() => {
       if (!loginToken) return navigate("/auth");
-      else return navigate("/");
+      else return navigate("/todos");
     }, [loginToken]);
 
     return (

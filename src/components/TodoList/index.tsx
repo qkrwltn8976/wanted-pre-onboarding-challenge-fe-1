@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Button, List } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDeleteTodo } from "../../hooks/queries/useTodos";
 import { Todo } from "../../types/todos";
 import TodoModal from "../TodoModal";
@@ -14,8 +15,14 @@ const Base = styled.div`
 `;
 
 const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
+  const navigate = useNavigate();
   const { mutate } = useDeleteTodo();
   const [selectedId, setSelectedId] = useState<string | null>();
+  const { id: todoId } = useParams();
+
+  useEffect(() => {
+    setSelectedId(todoId);
+  }, [todoId]);
 
   return (
     <Base>
@@ -25,7 +32,13 @@ const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
         renderItem={(item) => (
           <List.Item
             actions={[
-              <Button onClick={() => setSelectedId(item.id)}>보기</Button>,
+              <Button
+                onClick={() => {
+                  navigate(`/todos/${item.id}`);
+                }}
+              >
+                보기
+              </Button>,
               <Button onClick={() => mutate(item.id)}>삭제</Button>,
             ]}
           >
@@ -36,7 +49,7 @@ const TodoList: React.FunctionComponent<ITodoListProps> = ({ todos }) => {
       {selectedId && (
         <TodoModal
           open={!!selectedId}
-          onCancel={() => setSelectedId(null)}
+          onCancel={() => navigate("/todos")}
           todoId={selectedId}
         />
       )}

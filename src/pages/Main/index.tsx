@@ -12,6 +12,7 @@ interface IMainProps {}
 const Base = styled.div`
   height: 100vh;
   padding: 30px;
+  width: 100%;
   ${flexHorizontal}
 `;
 

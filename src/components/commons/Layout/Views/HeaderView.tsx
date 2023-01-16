@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { flexCenter } from "../../../../styles/flex";
 import { IHeaderProps } from "../Header";
 import { Button } from "antd";
+import { palette } from "../../../../styles/palette";
 
 const Container = styled.div`
   ${flexCenter}
@@ -18,6 +19,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   padding: 20px 35px;
   width: 100%;
+  background: ${palette.gray[100]};
 `;
 
 const Title = styled.span`

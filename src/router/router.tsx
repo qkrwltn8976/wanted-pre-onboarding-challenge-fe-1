@@ -5,8 +5,9 @@ import Main from "../pages/Main";
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<Main />} />
+      <Route path="/todos" element={<Main />} />
       <Route path="/auth" element={<Auth />} />
+      <Route path="/todos/:id" element={<Main />} />
     </Routes>
   );
 };
