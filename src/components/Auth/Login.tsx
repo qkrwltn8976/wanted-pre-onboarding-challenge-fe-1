@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useEffect } from "react";
+import React, { ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { AUTH, TODO } from "../../constants/path.constant";
+import { AUTH } from "../../constants/path.constant";
 import useInput from "../../hooks/commons/useInput";
 import { useLogin } from "../../hooks/queries/useAuth";
-import { IAuthProps } from "../../types/authProps";
+
 import LoginView from "./Views/LoginView";
 
 export interface ILoginProps {
@@ -16,18 +16,11 @@ export interface ILoginProps {
   toRegisterPage: () => void;
 }
 
-const Login = ({ setLoginToken }: IAuthProps) => {
+const Login = () => {
   const navigate = useNavigate();
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
-  const { data, refetch } = useLogin(email, password);
-
-  useEffect(() => {
-    if (!data) return;
-    const { token } = data;
-    setLoginToken && setLoginToken(token);
-    navigate(TODO.DEFAULT, { replace: true });
-  }, [data]);
+  const { refetch } = useLogin(email, password);
 
   const loginProps: ILoginProps = {
     email,

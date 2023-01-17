@@ -1,9 +1,8 @@
-import React, { ChangeEvent, useCallback, useEffect } from "react";
+import React, { ChangeEvent, useCallback } from "react";
 import { RuleObject } from "antd/es/form";
 import { emailValidator, passwordValidator } from "../../utils/validator";
 import useInput from "../../hooks/commons/useInput";
 import { useRegister } from "../../hooks/queries/useAuth";
-import { IAuthProps } from "../../types/authProps";
 import RegisterView from "./Views/RegisterView";
 
 export interface IRegisterProps {
@@ -19,18 +18,12 @@ export interface IRegisterProps {
   onSubmit: () => void;
 }
 
-const Register = ({ setLoginToken }: IAuthProps) => {
+const Register = () => {
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
   const [passwordCheck, onChangePasswordCheck] = useInput("");
 
-  const { mutate, data } = useRegister();
-
-  useEffect(() => {
-    if (!data) return;
-    const { token } = data;
-    setLoginToken && setLoginToken(token);
-  }, [data]);
+  const { mutate } = useRegister();
 
   const registerProps: IRegisterProps = {
     email,
