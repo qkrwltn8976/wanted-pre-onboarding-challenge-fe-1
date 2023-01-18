@@ -47,3 +47,52 @@
 - [ ] 보다 좁은 타입으로 정의 (ex. string → as const or union)
 - [x] react query QueryClient 설정 추가 global error 토스트 메시지 처리
 - [x] 로그아웃 기능
+
+## 폴더 구조
+
+```sh
+📦src
+ ┣ 📂apis
+ ┣ 📂components
+ ┃ ┣ 📂Auth
+ ┃ ┃ ┣ 📂Views
+ ┃ ┃ ┃ ┣ 📜LoginView.tsx
+ ┃ ┃ ┃ ┗ 📜RegisterView.tsx
+ ┃ ┃ ┣ 📜Login.tsx
+ ┃ ┃ ┗ 📜Register.tsx
+ ┃ ┣ 📂Common
+ ┃ ┃ ┣ 📂Layout
+ ┃ ┃ ┃ ┣ 📂Views
+ ┃ ┃ ┃ ┃ ┣ 📜HeaderView.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜LayoutView.tsx
+ ┃ ┃ ┃ ┣ 📜Header.tsx
+ ┃ ┃ ┃ ┗ 📜Layout.tsx
+ ┃ ┃ ┗ 📂hocs
+ ┃ ┃ ┃ ┗ 📜withAuth.tsx
+ ┃ ┗ 📂Todo
+ ┃ ┃ ┣ 📂Views
+ ┃ ┃ ┃ ┣ 📜TodoFormView.tsx
+ ┃ ┃ ┃ ┣ 📜TodoListView.tsx
+ ┃ ┃ ┃ ┗ 📜TodoModalView.tsx
+ ┃ ┃ ┣ 📜TodoForm.tsx
+ ┃ ┃ ┣ 📜TodoLayout.tsx
+ ┃ ┃ ┣ 📜TodoList.tsx
+ ┃ ┃ ┗ 📜TodoModal.tsx
+ ┣ 📂constants
+ ┣ 📂hooks
+ ┃ ┣ 📂commons
+ ┃ ┃ ┗ 📜useInput.ts
+ ┃ ┗ 📂queries
+ ┃ ┃ ┣ 📜useAuth.ts
+ ┃ ┃ ┗ 📜useTodos.ts
+ ┣ 📂pages
+ ┃ ┣ 📂Auth
+ ┃ ┗ 📂Main
+ ┣ 📂router
+ ┃ ┗ 📜router.tsx
+ ┣ 📂styles
+ ┣ 📂types
+ ┣ 📂utils
+ ┣ 📜App.tsx
+ ┗ 📜index.tsx
+```
