@@ -10,6 +10,22 @@
 
 # 클라이언트 구현 과제 안내
 
+## 실행 방법
+
+```bash
+# CLONE REPOSITORY
+git clone https://github.com/qkrwltn8976/wanted-pre-onboarding-challenge-fe-1.git
+cd wanted-pre-onboarding-challenge-fe-1
+
+# INSTALLATION & COMPILATION
+npm install
+npm run build
+
+# START SERVER & STOP SERVER
+npm run start
+npm run stop
+```
+
 ## Assignment 1 - Login / SignUp
 
 - /auth 경로에 로그인 / 회원가입 기능을 개발합니다
@@ -44,11 +60,11 @@
 - [ ] 삭제, 업데이트 등 파괴적 동작을 할 때 유지의 확인 필요
 - [x] tsconfig에 strict 옵션 적용
 - [x] 타입 가드 및 타입 추론을 사용해 any, 타입 단언을 모두 없애기
-- [ ] 보다 좁은 타입으로 정의 (ex. string → as const or union)
+- [x] 보다 좁은 타입으로 정의 (ex. string → as const or union)
 - [x] react query QueryClient 설정 추가 global error 토스트 메시지 처리
 - [x] 로그아웃 기능
 
-## 폴더 구조
+## :open_file_folder: 폴더 구조
 
 ```sh
 📦src
