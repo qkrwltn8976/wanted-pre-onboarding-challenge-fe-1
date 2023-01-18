@@ -20,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
-  const { refetch } = useLogin(email, password);
+  const { mutate } = useLogin();
 
   const loginProps: ILoginProps = {
     email,
@@ -28,7 +28,7 @@ const Login = () => {
     loginEnabled: email.length > 0 && password.length > 0,
     onChangeEmail,
     onChangePassword,
-    onSubmit: () => refetch(),
+    onSubmit: () => mutate({ email, password }),
     toRegisterPage: () => navigate(AUTH.REGISTER),
   };
   return <LoginView {...loginProps} />;

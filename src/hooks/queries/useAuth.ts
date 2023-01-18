@@ -7,16 +7,19 @@ import { authKeys } from "../../constants/queryKey.constant";
 import { TODO } from "../../constants/path.constant";
 import { useNavigate } from "react-router-dom";
 
-const useLogin = (email: string, password: string) => {
+const useLogin = () => {
   const navigate = useNavigate();
-  return useQuery(authKeys.login, () => login(email, password), {
-    enabled: false,
-    onSuccess: ({ message, token }) => {
-      toast.success(message);
-      localStorage.setItem(ACCESS_TOKEN_KEY, JSON.stringify(token));
-      navigate(TODO.DEFAULT, { replace: true });
-    },
-  });
+  return useMutation(
+    authKeys.login,
+    (userInput: UserInput) => login(userInput),
+    {
+      onSuccess: ({ message, token }) => {
+        toast.success(message);
+        localStorage.setItem(ACCESS_TOKEN_KEY, JSON.stringify(token));
+        navigate(TODO.DEFAULT, { replace: true });
+      },
+    }
+  );
 };
 
 const useRegister = () => {
