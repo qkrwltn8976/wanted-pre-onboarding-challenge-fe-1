@@ -7,7 +7,7 @@ import {
   getTodos,
   updateTodo,
 } from "./../../apis/todo";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Todo } from "../../types/todos";
 
 const useGetTodo = (id: string) =>

@@ -1,5 +1,5 @@
 import { ACCESS_TOKEN_KEY } from "./../../constants/token.constant";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { login, signUp } from "../../apis/auth";
 import { UserInput } from "../../types/users";
 import toast from "react-hot-toast";

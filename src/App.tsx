@@ -3,7 +3,7 @@ import {
   QueryCache,
   QueryClient,
   QueryClientProvider,
-} from "react-query";
+} from "@tanstack/react-query";
 import GlobalStyle from "./styles/GlobalStyle";
 import toast, { Toaster } from "react-hot-toast";
 import { AxiosError } from "axios";
