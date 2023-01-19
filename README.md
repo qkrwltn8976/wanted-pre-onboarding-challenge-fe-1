@@ -8,6 +8,15 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
 
+| 라이브러리           | 용도                                                                                |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| **React Query**      | 서버 상태 관리를 위해 사용하였습니다.                                               |
+| **emotion**          | CSS in JS 방식으로 CSS를 작성하기 위해 사용하였습니다.                              |
+| **antd**             | 편리한 UI 작업을 위하여 antd UI 라이브러리를 사용하였습니다.                        |
+| **react-router-dom** | 페이지 이동 처리 및 중첩 라우팅 사용을 위하여 react-router-dom v6를 사용하였습니다. |
+| **axios**            | 비동기 HTTP 통신 처리를 위해 사용하였습니다.                                        |
+| **typescript**       | type 안정성과 더 나은 개발 디버깅을 위해 사용하였습니다.                            |
+
 # 클라이언트 구현 과제 안내
 
 ## 실행 방법
